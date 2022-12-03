@@ -12,9 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get "/movies/:id" do
     movie = Movie.find(params[:id])
-    movie.to_json(only: [:id, :title, :image, :year], include: {
-      reviews: { only: [:comments, :user_rating, :scare_scale]}
-    })
+    movie.to_json(:include => [:reviews])
   end
 
   post "/movies" do
@@ -52,6 +50,9 @@ class ApplicationController < Sinatra::Base
     review.destroy
     review.to_json
   end
+
+
+  #additional restful controller
 
   get "/movies/:id/reviews" do
     review = Movie.find(params[:id]).reviews
