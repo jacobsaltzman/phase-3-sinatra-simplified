@@ -10,11 +10,6 @@ class ApplicationController < Sinatra::Base
     movies.to_json  
   end
 
-  get "/movies/:id" do
-    movie = Movie.find(params[:id])
-    movie.to_json(:include => [:reviews])
-  end
-
   post "/movies" do
     movie = Movie.create(params)
     movie.to_json
@@ -22,17 +17,6 @@ class ApplicationController < Sinatra::Base
 
 
   #reviews controller
-
-
-  get "/reviews" do 
-    reviews = Review.all 
-    reviews.to_json(:include => [:movie]) 
-  end
-
-  get "/reviews/:id" do
-    review = Review.find(params[:id])
-    review.to_json(:include => [:movie])
-  end
 
   post "/reviews" do
     review = Review.create(params)
@@ -51,13 +35,6 @@ class ApplicationController < Sinatra::Base
     review.to_json
   end
 
-
-  #additional restful controller
-
-  get "/movies/:id/reviews" do
-    review = Movie.find(params[:id]).reviews
-    review.to_json
-  end
 
 end
 
