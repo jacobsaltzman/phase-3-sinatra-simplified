@@ -18,6 +18,11 @@ class ApplicationController < Sinatra::Base
 
   #reviews controller
 
+  get "/reviews" do
+    review = Review.all 
+    review.to_json(:include => [:movie])
+  end
+
   post "/reviews" do
     review = Review.create(params)
     review.to_json(:include => [:movie])
