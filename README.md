@@ -89,6 +89,13 @@ This will run your server on port
 [http://localhost:9292](http://localhost:9292).
 
 
+check out the JSON data and make fetch requests for each model using:
+
+[http://localhost:9292/movies](http://localhost:9292/movies)
+
+[http://localhost:9292/reviews](http://localhost:9292/reviews).
+
+
 ### Frontend Setup
 
 
